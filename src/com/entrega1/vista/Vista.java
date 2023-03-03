@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.practica1;
+package com.entrega1.vista;
 
 /**
  *
  * @author hquea
  */
-public class NewJFrame extends javax.swing.JFrame {
+public class Vista extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
      */
-    public NewJFrame() {
+    public Vista() {
         initComponents();
     }
 
@@ -74,18 +74,13 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_END);
 
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        jList1.setPreferredSize(new java.awt.Dimension(250, 100));
         jScrollPane1.setViewportView(jList1);
 
         jPanel2.add(jScrollPane1);
@@ -131,8 +126,6 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel22.add(jPanel29);
 
         jPanel30.setLayout(new java.awt.GridLayout(1, 0));
-
-        jTextField4.setText("jTextField4");
         jPanel30.add(jTextField4);
 
         jPanel22.add(jPanel30);
@@ -146,7 +139,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jPanel32.setLayout(new java.awt.GridLayout(1, 0));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Malo", "Regular", "Bueno" }));
         jPanel32.add(jComboBox2);
 
         jPanel22.add(jPanel32);
@@ -158,7 +151,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jPanel22.add(jPanel33);
 
-        jPanel34.setLayout(new java.awt.GridLayout());
+        jPanel34.setLayout(new java.awt.GridLayout(1, 0));
 
         jPanel35.setLayout(new java.awt.GridLayout(1, 0));
         jPanel35.add(jSpinner2);
@@ -168,7 +161,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel22.add(jPanel34);
         jPanel22.add(jPanel6);
 
-        jPanel5.setLayout(new java.awt.GridLayout());
+        jPanel5.setLayout(new java.awt.GridLayout(1, 0));
 
         jCheckBox1.setText("Ya lo he leído");
         jPanel5.add(jCheckBox1);
@@ -187,8 +180,6 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel23.add(jPanel24);
 
         jPanel25.setLayout(new java.awt.GridLayout(1, 0));
-
-        jTextField3.setText("jTextField3");
         jPanel25.add(jTextField3);
 
         jPanel23.add(jPanel25);
@@ -240,20 +231,23 @@ public class NewJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Vista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Vista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Vista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Vista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewJFrame().setVisible(true);
+                new Vista().setVisible(true);
             }
         });
     }
