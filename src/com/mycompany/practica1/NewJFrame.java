@@ -54,8 +54,9 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel34 = new javax.swing.JPanel();
         jPanel35 = new javax.swing.JPanel();
         jSpinner2 = new javax.swing.JSpinner();
-        jPanel36 = new javax.swing.JPanel();
-        jCheckBox2 = new javax.swing.JCheckBox();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jCheckBox1 = new javax.swing.JCheckBox();
         jPanel23 = new javax.swing.JPanel();
         jPanel24 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -97,21 +98,21 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jPanel16.setLayout(new java.awt.GridLayout(1, 0));
 
-        jButton2.setText("jButton1");
+        jButton2.setText("Guardar");
         jPanel16.add(jButton2);
 
         jPanel4.add(jPanel16);
 
         jPanel17.setLayout(new java.awt.GridLayout(1, 0));
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Editar");
         jPanel17.add(jButton1);
 
         jPanel4.add(jPanel17);
 
         jPanel18.setLayout(new java.awt.GridLayout(1, 0));
 
-        jButton3.setText("jButton1");
+        jButton3.setText("Borrar");
         jPanel18.add(jButton3);
 
         jPanel4.add(jPanel18);
@@ -120,71 +121,72 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jPanel21.setLayout(new java.awt.BorderLayout());
 
-        jPanel22.setLayout(new java.awt.GridLayout(3, 2));
+        jPanel22.setLayout(new java.awt.GridLayout(4, 2));
 
-        jPanel29.setLayout(new java.awt.GridLayout());
+        jPanel29.setLayout(new java.awt.GridLayout(1, 0));
 
-        jLabel9.setText("jLabel9");
+        jLabel9.setText("ISBN");
         jPanel29.add(jLabel9);
 
         jPanel22.add(jPanel29);
 
-        jPanel30.setLayout(new java.awt.GridLayout());
+        jPanel30.setLayout(new java.awt.GridLayout(1, 0));
 
         jTextField4.setText("jTextField4");
         jPanel30.add(jTextField4);
 
         jPanel22.add(jPanel30);
 
-        jPanel31.setLayout(new java.awt.GridLayout());
+        jPanel31.setLayout(new java.awt.GridLayout(1, 0));
 
-        jLabel10.setText("jLabel9");
+        jLabel10.setText("Estado");
         jPanel31.add(jLabel10);
 
         jPanel22.add(jPanel31);
 
-        jPanel32.setLayout(new java.awt.GridLayout());
+        jPanel32.setLayout(new java.awt.GridLayout(1, 0));
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel32.add(jComboBox2);
 
         jPanel22.add(jPanel32);
 
-        jPanel33.setLayout(new java.awt.GridLayout());
+        jPanel33.setLayout(new java.awt.GridLayout(1, 0));
 
-        jLabel11.setText("jLabel9");
+        jLabel11.setText("Precio");
         jPanel33.add(jLabel11);
 
         jPanel22.add(jPanel33);
 
-        jPanel34.setLayout(new java.awt.GridLayout(2, 0));
+        jPanel34.setLayout(new java.awt.GridLayout());
 
-        jPanel35.setLayout(new java.awt.GridLayout());
+        jPanel35.setLayout(new java.awt.GridLayout(1, 0));
         jPanel35.add(jSpinner2);
 
         jPanel34.add(jPanel35);
 
-        jPanel36.setLayout(new java.awt.GridLayout());
-
-        jCheckBox2.setText("jCheckBox2");
-        jPanel36.add(jCheckBox2);
-
-        jPanel34.add(jPanel36);
-
         jPanel22.add(jPanel34);
+        jPanel22.add(jPanel6);
+
+        jPanel5.setLayout(new java.awt.GridLayout());
+
+        jCheckBox1.setText("Ya lo he leído");
+        jPanel5.add(jCheckBox1);
+
+        jPanel22.add(jPanel5);
 
         jPanel21.add(jPanel22, java.awt.BorderLayout.PAGE_END);
 
         jPanel23.setLayout(new java.awt.GridLayout(1, 2));
 
-        jPanel24.setLayout(new java.awt.GridLayout());
+        jPanel24.setLayout(new java.awt.GridLayout(1, 0));
 
-        jLabel7.setText("jLabel7");
+        jLabel7.setText("Título");
         jPanel24.add(jLabel7);
 
         jPanel23.add(jPanel24);
 
-        jPanel25.setLayout(new java.awt.GridLayout());
+        jPanel25.setLayout(new java.awt.GridLayout(1, 0));
 
         jTextField3.setText("jTextField3");
         jPanel25.add(jTextField3);
@@ -195,14 +197,14 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jPanel26.setLayout(new java.awt.GridLayout(1, 2));
 
-        jPanel27.setLayout(new java.awt.GridLayout());
+        jPanel27.setLayout(new java.awt.GridLayout(1, 0));
 
-        jLabel8.setText("jLabel8");
+        jLabel8.setText("Descripción");
         jPanel27.add(jLabel8);
 
         jPanel26.add(jPanel27);
 
-        jPanel28.setLayout(new java.awt.GridLayout());
+        jPanel28.setLayout(new java.awt.GridLayout(1, 0));
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
@@ -260,7 +262,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -290,8 +292,9 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel33;
     private javax.swing.JPanel jPanel34;
     private javax.swing.JPanel jPanel35;
-    private javax.swing.JPanel jPanel36;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSpinner jSpinner2;
