@@ -6,15 +6,17 @@ package com.entrega1.vista;
 
 /**
  *
- * @author hquea
+ * @author jagarci
  */
 public class Vista extends javax.swing.JFrame {
-
+    private Controlador miControlador;
+    
     /**
      * Creates new form NewJFrame
      */
     public Vista() {
         initComponents();
+        miControlador=new Controlador(this);
     }
 
     /**
@@ -27,61 +29,61 @@ public class Vista extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        errorLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        librosList = new javax.swing.JList<>();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        guardarButton = new javax.swing.JButton();
         jPanel17 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        editarButton = new javax.swing.JButton();
         jPanel18 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        borrarButton = new javax.swing.JButton();
         jPanel21 = new javax.swing.JPanel();
         jPanel22 = new javax.swing.JPanel();
         jPanel29 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jPanel30 = new javax.swing.JPanel();
-        jTextField4 = new javax.swing.JTextField();
+        referenciaTextField = new javax.swing.JTextField();
         jPanel31 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jPanel32 = new javax.swing.JPanel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        estadoComboBox = new javax.swing.JComboBox<>();
         jPanel33 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jPanel34 = new javax.swing.JPanel();
         jPanel35 = new javax.swing.JPanel();
-        jSpinner2 = new javax.swing.JSpinner();
+        precioSpinner = new javax.swing.JSpinner();
         jPanel6 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        leidoCheckBox = new javax.swing.JCheckBox();
         jPanel23 = new javax.swing.JPanel();
         jPanel24 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jPanel25 = new javax.swing.JPanel();
-        jTextField3 = new javax.swing.JTextField();
+        tituloTextField = new javax.swing.JTextField();
         jPanel26 = new javax.swing.JPanel();
         jPanel27 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jPanel28 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        descripcionTextArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        jPanel1.add(jLabel1);
+        errorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel1.add(errorLabel);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_END);
 
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
-        jList1.setPreferredSize(new java.awt.Dimension(250, 100));
-        jScrollPane1.setViewportView(jList1);
+        librosList.setPreferredSize(new java.awt.Dimension(250, 100));
+        jScrollPane1.setViewportView(librosList);
 
         jPanel2.add(jScrollPane1);
 
@@ -93,22 +95,27 @@ public class Vista extends javax.swing.JFrame {
 
         jPanel16.setLayout(new java.awt.GridLayout(1, 0));
 
-        jButton2.setText("Guardar");
-        jPanel16.add(jButton2);
+        guardarButton.setText("Guardar");
+        guardarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarButtonActionPerformed(evt);
+            }
+        });
+        jPanel16.add(guardarButton);
 
         jPanel4.add(jPanel16);
 
         jPanel17.setLayout(new java.awt.GridLayout(1, 0));
 
-        jButton1.setText("Editar");
-        jPanel17.add(jButton1);
+        editarButton.setText("Editar");
+        jPanel17.add(editarButton);
 
         jPanel4.add(jPanel17);
 
         jPanel18.setLayout(new java.awt.GridLayout(1, 0));
 
-        jButton3.setText("Borrar");
-        jPanel18.add(jButton3);
+        borrarButton.setText("Borrar");
+        jPanel18.add(borrarButton);
 
         jPanel4.add(jPanel18);
 
@@ -126,7 +133,7 @@ public class Vista extends javax.swing.JFrame {
         jPanel22.add(jPanel29);
 
         jPanel30.setLayout(new java.awt.GridLayout(1, 0));
-        jPanel30.add(jTextField4);
+        jPanel30.add(referenciaTextField);
 
         jPanel22.add(jPanel30);
 
@@ -139,8 +146,8 @@ public class Vista extends javax.swing.JFrame {
 
         jPanel32.setLayout(new java.awt.GridLayout(1, 0));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Malo", "Regular", "Bueno" }));
-        jPanel32.add(jComboBox2);
+        estadoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Malo", "Regular", "Bueno" }));
+        jPanel32.add(estadoComboBox);
 
         jPanel22.add(jPanel32);
 
@@ -154,7 +161,7 @@ public class Vista extends javax.swing.JFrame {
         jPanel34.setLayout(new java.awt.GridLayout(1, 0));
 
         jPanel35.setLayout(new java.awt.GridLayout(1, 0));
-        jPanel35.add(jSpinner2);
+        jPanel35.add(precioSpinner);
 
         jPanel34.add(jPanel35);
 
@@ -163,8 +170,8 @@ public class Vista extends javax.swing.JFrame {
 
         jPanel5.setLayout(new java.awt.GridLayout(1, 0));
 
-        jCheckBox1.setText("Ya lo he leído");
-        jPanel5.add(jCheckBox1);
+        leidoCheckBox.setText("Ya lo he leído");
+        jPanel5.add(leidoCheckBox);
 
         jPanel22.add(jPanel5);
 
@@ -180,7 +187,7 @@ public class Vista extends javax.swing.JFrame {
         jPanel23.add(jPanel24);
 
         jPanel25.setLayout(new java.awt.GridLayout(1, 0));
-        jPanel25.add(jTextField3);
+        jPanel25.add(tituloTextField);
 
         jPanel23.add(jPanel25);
 
@@ -197,9 +204,9 @@ public class Vista extends javax.swing.JFrame {
 
         jPanel28.setLayout(new java.awt.GridLayout(1, 0));
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane3.setViewportView(jTextArea2);
+        descripcionTextArea.setColumns(20);
+        descripcionTextArea.setRows(5);
+        jScrollPane3.setViewportView(descripcionTextArea);
 
         jPanel28.add(jScrollPane3);
 
@@ -214,57 +221,35 @@ public class Vista extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Vista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Vista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Vista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Vista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+    private void guardarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarButtonActionPerformed
+        this.miControlador.procesarEventoGuardar();
+    }//GEN-LAST:event_guardarButtonActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Vista().setVisible(true);
-            }
-        });
+    public void mostrarMensajeError(String mensaje){
+        errorLabel.setText(mensaje);
+    }
+    
+    public String getTituloLibro(){
+        return tituloTextField.getText();
+    }
+    
+    public String getISBNLibro(){
+        return referenciaTextField.getText();
     }
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton borrarButton;
+    private javax.swing.JTextArea descripcionTextArea;
+    private javax.swing.JButton editarButton;
+    private javax.swing.JLabel errorLabel;
+    private javax.swing.JComboBox<String> estadoComboBox;
+    private javax.swing.JButton guardarButton;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
@@ -291,9 +276,10 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JCheckBox leidoCheckBox;
+    private javax.swing.JList<String> librosList;
+    private javax.swing.JSpinner precioSpinner;
+    private javax.swing.JTextField referenciaTextField;
+    private javax.swing.JTextField tituloTextField;
     // End of variables declaration//GEN-END:variables
 }
