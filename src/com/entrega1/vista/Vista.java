@@ -58,7 +58,8 @@ public class Vista extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jPanel34 = new javax.swing.JPanel();
         jPanel35 = new javax.swing.JPanel();
-        precioSpinner = new javax.swing.JSpinner();
+        unidadesSpinner = new javax.swing.JSpinner();
+        decimalesSpinner = new javax.swing.JSpinner();
         jPanel6 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         leidoCheckBox = new javax.swing.JCheckBox();
@@ -75,6 +76,7 @@ public class Vista extends javax.swing.JFrame {
         descripcionTextArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setSize(new java.awt.Dimension(900, 450));
 
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
@@ -85,7 +87,7 @@ public class Vista extends javax.swing.JFrame {
 
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
-        librosList.setPreferredSize(new java.awt.Dimension(250, 100));
+        librosList.setPreferredSize(null);
         jScrollPane1.setViewportView(librosList);
 
         jPanel2.add(jScrollPane1);
@@ -164,7 +166,8 @@ public class Vista extends javax.swing.JFrame {
         jPanel34.setLayout(new java.awt.GridLayout(1, 0));
 
         jPanel35.setLayout(new java.awt.GridLayout(1, 0));
-        jPanel35.add(precioSpinner);
+        jPanel35.add(unidadesSpinner);
+        jPanel35.add(decimalesSpinner);
 
         jPanel34.add(jPanel35);
 
@@ -185,11 +188,14 @@ public class Vista extends javax.swing.JFrame {
         jPanel24.setLayout(new java.awt.GridLayout(1, 0));
 
         jLabel7.setText("Título");
+        jLabel7.setMinimumSize(new java.awt.Dimension(100, 50));
         jPanel24.add(jLabel7);
 
         jPanel23.add(jPanel24);
 
         jPanel25.setLayout(new java.awt.GridLayout(1, 0));
+
+        tituloTextField.setMinimumSize(new java.awt.Dimension(1000, 1000));
         jPanel25.add(tituloTextField);
 
         jPanel23.add(jPanel25);
@@ -236,8 +242,28 @@ public class Vista extends javax.swing.JFrame {
         return tituloTextField.getText();
     }
     
+    public String getDescripcionLibro(){
+        return descripcionTextArea.getText();
+    }
+    
     public String getISBNLibro(){
         return referenciaTextField.getText();
+    }
+    
+    public String getEstadoLibro(){
+        return (String) estadoComboBox.getSelectedItem();
+    }
+    
+    public int getUnidadesLibro(){
+        return (int) unidadesSpinner.getValue();
+    }
+    
+    public int getDecimalesLibro(){
+        return (int) decimalesSpinner.getValue();
+    }
+    
+    public boolean getLeidoLibro(){
+        return leidoCheckBox.isEnabled();
     }
     
     public void actualizaListaLibros(ArrayList<ReferenciaLibro> listaLibros){
@@ -253,6 +279,7 @@ public class Vista extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton borrarButton;
+    private javax.swing.JSpinner decimalesSpinner;
     private javax.swing.JTextArea descripcionTextArea;
     private javax.swing.JButton editarButton;
     private javax.swing.JLabel errorLabel;
@@ -291,8 +318,8 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JCheckBox leidoCheckBox;
     private javax.swing.JList<String> librosList;
-    private javax.swing.JSpinner precioSpinner;
     private javax.swing.JTextField referenciaTextField;
     private javax.swing.JTextField tituloTextField;
+    private javax.swing.JSpinner unidadesSpinner;
     // End of variables declaration//GEN-END:variables
 }

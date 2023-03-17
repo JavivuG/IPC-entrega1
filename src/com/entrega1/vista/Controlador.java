@@ -21,30 +21,38 @@ public class Controlador {
     }
     
     public void procesarEventoGuardar(){
-        String titulo=miVista.getTituloLibro();
+        String titulo = miVista.getTituloLibro();
         String isbn = miVista.getISBNLibro();
-        ReferenciaLibro libro=new ReferenciaLibro(isbn, titulo);
-        if (compruebaLibro(libro)){ // Comprueba que los caracteres son los que corresponden para el libro y el isbn
+        int unidades = miVista.getUnidadesLibro();
+        int decimales = miVista.getDecimalesLibro();
+        
+        if (compruebaLibro(titulo, isbn, unidades, decimales)){ // Comprueba que los caracteres son los que corresponden para el libro y el isbn
+            ReferenciaLibro libro = new ReferenciaLibro(titulo, miVista.getDescripcionLibro(),
+                isbn, miVista.getEstadoLibro(), unidades, decimales, miVista.getLeidoLibro());
             miModelo.addLibro(libro);
             miVista.actualizaListaLibros(miModelo.getListaLibros());
         }
         
     }
     
-    private boolean compruebaLibro(ReferenciaLibro libro){
-        boolean guardarLibro=false;
-        if (!libro.isbnCorrecto() && !libro.tituloCorrecto()){
-            miVista.mostrarMensajeError("El titulo del libro debe tener entre 1 y 20 caracteres, El isbn del libro debe tener entre 1 y 13 caracteres.");
+    private boolean compruebaLibro(String titulo, String isbn, int unidades, int decimales){
+        boolean guardarLibro = true;
+        String error = "";
+        if (titulo == null || titulo.length() > 20){
+            error = error + "El titulo del libro debe tener entre 1 y 20 caracteres. ";
         }
-        else if (!libro.tituloCorrecto()){
-            miVista.mostrarMensajeError("El titulo del libro debe tener entre 1 y 20 caracteres.");
+        if (isbn == null || isbn.length() > 13){
+            error = error + "El isbn del libro debe tener entre 1 y 13 caracteres. ";
         }
-        else if (!libro.isbnCorrecto()){
-            miVista.mostrarMensajeError("El isbn del libro debe tener entre 1 y 13 caracteres.");
+        if (unidades < 0){
+            error = error + "Los euros no pueden ser negativos. ";
         }
-        else {
-            guardarLibro=true;
-            return guardarLibro;
+        if (decimales < 0){
+            error = error + "Los centimos no pueden ser negativos. ";
+        }
+        if (!error.equals("")){
+            guardarLibro = false;
+            miVista.mostrarMensajeError(error);
         }
         return guardarLibro;
     }
