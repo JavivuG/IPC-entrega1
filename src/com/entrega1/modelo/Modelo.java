@@ -20,4 +20,8 @@ public class Modelo {
     public void addLibro(ReferenciaLibro libro){
        listaLibros.add(libro);
     }
+    
+    public ArrayList<ReferenciaLibro> getListaLibros(){
+        return listaLibros;
+    }
 }

@@ -4,6 +4,9 @@
  */
 package com.entrega1.vista;
 
+import com.entrega1.modelo.ReferenciaLibro;
+import java.util.ArrayList;
+
 /**
  *
  * @author jagarci
@@ -235,6 +238,16 @@ public class Vista extends javax.swing.JFrame {
     
     public String getISBNLibro(){
         return referenciaTextField.getText();
+    }
+    
+    public void actualizaListaLibros(ArrayList<ReferenciaLibro> listaLibros){
+        String[] datos=new String[listaLibros.size()];
+        for (int i=0; i<listaLibros.size(); i++){
+            datos[i]=listaLibros.get(i).toString();
+        }
+        librosList.setListData(datos);
+        
+        
     }
 
 

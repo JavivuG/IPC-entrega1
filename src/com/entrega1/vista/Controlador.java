@@ -24,20 +24,28 @@ public class Controlador {
         String titulo=miVista.getTituloLibro();
         String isbn = miVista.getISBNLibro();
         ReferenciaLibro libro=new ReferenciaLibro(isbn, titulo);
-        compruebaLibro(libro);
+        if (compruebaLibro(libro)){ // Comprueba que los caracteres son los que corresponden para el libro y el isbn
+            miModelo.addLibro(libro);
+            miVista.actualizaListaLibros(miModelo.getListaLibros());
+        }
+        
     }
     
-    private void compruebaLibro(ReferenciaLibro libro){
-        if (libro.isbnCorrecto()){
-            if (libro.tituloCorrecto()){
-                miModelo.addLibro(libro);
-            }
-            else {
-                miVista.mostrarMensajeError("El titulo del libro debe tener entre 1 y 20 caracteres");
-            }
+    private boolean compruebaLibro(ReferenciaLibro libro){
+        boolean guardarLibro=false;
+        if (!libro.isbnCorrecto() && !libro.tituloCorrecto()){
+            miVista.mostrarMensajeError("El titulo del libro debe tener entre 1 y 20 caracteres, El isbn del libro debe tener entre 1 y 13 caracteres.");
+        }
+        else if (!libro.tituloCorrecto()){
+            miVista.mostrarMensajeError("El titulo del libro debe tener entre 1 y 20 caracteres.");
+        }
+        else if (!libro.isbnCorrecto()){
+            miVista.mostrarMensajeError("El isbn del libro debe tener entre 1 y 13 caracteres.");
         }
         else {
-            miVista.mostrarMensajeError("El isbn debe tener entre 1 y 13 caracteres");
+            guardarLibro=true;
+            return guardarLibro;
         }
+        return guardarLibro;
     }
 }
