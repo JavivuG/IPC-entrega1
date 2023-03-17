@@ -10,22 +10,21 @@ package com.entrega1.modelo;
  */
 public class ReferenciaLibro {
     private String titulo;
-    private final String ISBN;
+    private String isbn;
     private String descripcion;
     private int unidades;
     private int decimales;
     private String estado;
     private boolean leido;
     
-    public ReferenciaLibro(String titulo, String descripcion, String isbn, 
-            String estado, int unidades, int decimales, boolean leido){
-        this.titulo = titulo;
-        ISBN = isbn;
-        this.descripcion = descripcion;
-        this.estado = estado;
-        this.leido = leido;
-        this.unidades = unidades;
-        this.decimales = decimales;
+    public ReferenciaLibro(String titulo, String descripcion, String isbn, String estado, int unidades, int decimales, boolean leido){
+        this.isbn = isbn;
+        setTitulo(titulo);
+        setDescripcion(descripcion);
+        setLeido(leido);
+        setUnidades(unidades);
+        setDecimales(decimales);
+        setEstado(estado);
     }
     
     public String getTitulo(){
@@ -33,51 +32,55 @@ public class ReferenciaLibro {
     }
     
     public String getISBN(){
-        return ISBN;
+        return isbn;
     }
     
     public String getDescripcion(){
         return descripcion;
     }
     
-    public int getUnidades(){
+    public int getUnidadesLibro(){
         return unidades;
     }
     
-    public int getDecimales(){
+    public int getDecimalesLibro(){
         return decimales;
+    }
+    
+    public double getPrecio(){
+        return getUnidadesLibro() + (getDecimalesLibro()/ 10.0f);
     }
     
     public String getEstado(){
         return estado;
     }
     
-    public boolean getLeido(){
+    public boolean isLeido(){
         return leido;
     }
     
-    public void setTitulo(String nTitulo){
-        titulo = nTitulo;
+    public void setTitulo(String titulo){
+        this.titulo = titulo;
     }
     
-    public void setDescripcion(String nDescripcion){
-        descripcion = nDescripcion;
+    public void setDescripcion(String descripcion){
+        this.descripcion = descripcion;
     }
     
-    public void setUnidades(int nUnidades){
-        unidades = nUnidades;
+    public void setUnidades(int unidades){
+        this.unidades=unidades;
     }
     
-    public void setDecimales(int nDecimales){
-        decimales = nDecimales;
+    public void setDecimales(int decimales){
+        this.decimales=decimales;
     }
     
-    public void setEstado (String nEstado){
-        estado = nEstado;
+    public void setEstado(String estado){
+        this.estado = estado;
     }
     
-    public void setLeido (boolean nLeido){
-        leido = nLeido;
+    public void setLeido(boolean leido){
+        this.leido = leido;
     }
     
     @Override

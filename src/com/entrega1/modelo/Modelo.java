@@ -24,4 +24,8 @@ public class Modelo {
     public ArrayList<ReferenciaLibro> getListaLibros(){
         return listaLibros;
     }
+    
+    public void reemplazarLibro(ReferenciaLibro libro, int indice){
+        listaLibros.set(indice, libro);
+    }
 }

@@ -5,6 +5,7 @@
 package com.entrega1.vista;
 
 import com.entrega1.modelo.ReferenciaLibro;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 /**
@@ -88,6 +89,11 @@ public class Vista extends javax.swing.JFrame {
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
         librosList.setPreferredSize(null);
+        librosList.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                librosListKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(librosList);
 
         jPanel2.add(jScrollPane1);
@@ -113,6 +119,11 @@ public class Vista extends javax.swing.JFrame {
         jPanel17.setLayout(new java.awt.GridLayout(1, 0));
 
         editarButton.setText("Editar");
+        editarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarButtonActionPerformed(evt);
+            }
+        });
         jPanel17.add(editarButton);
 
         jPanel4.add(jPanel17);
@@ -120,6 +131,11 @@ public class Vista extends javax.swing.JFrame {
         jPanel18.setLayout(new java.awt.GridLayout(1, 0));
 
         borrarButton.setText("Borrar");
+        borrarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                borrarButtonActionPerformed(evt);
+            }
+        });
         jPanel18.add(borrarButton);
 
         jPanel4.add(jPanel18);
@@ -234,6 +250,20 @@ public class Vista extends javax.swing.JFrame {
         this.miControlador.procesarEventoGuardar();
     }//GEN-LAST:event_guardarButtonActionPerformed
 
+    private void librosListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_librosListKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_DELETE){
+            miControlador.procesarEventoBorrar();
+        }
+    }//GEN-LAST:event_librosListKeyPressed
+
+    private void editarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarButtonActionPerformed
+        miControlador.procesarEventoEditar();
+    }//GEN-LAST:event_editarButtonActionPerformed
+
+    private void borrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarButtonActionPerformed
+        miControlador.procesarEventoBorrar();
+    }//GEN-LAST:event_borrarButtonActionPerformed
+
     public void mostrarMensajeError(String mensaje){
         errorLabel.setText(mensaje);
     }
@@ -262,8 +292,12 @@ public class Vista extends javax.swing.JFrame {
         return (int) decimalesSpinner.getValue();
     }
     
-    public boolean getLeidoLibro(){
-        return leidoCheckBox.isEnabled();
+    public boolean isLeidoLibro(){
+        return leidoCheckBox.isSelected();
+    }
+    
+    public int elementoListaSeleccionado(){
+        return librosList.getSelectedIndex();
     }
     
     public void actualizaListaLibros(ArrayList<ReferenciaLibro> listaLibros){
@@ -271,10 +305,33 @@ public class Vista extends javax.swing.JFrame {
         for (int i=0; i<listaLibros.size(); i++){
             datos[i]=listaLibros.get(i).toString();
         }
-        librosList.setListData(datos);
-        
+        librosList.setListData(datos); 
+    }
+    
+    public void editarLibro(ReferenciaLibro libro){
+        tituloTextField.setText(libro.getTitulo());
+        referenciaTextField.setText(libro.getISBN());
+        descripcionTextArea.setText(libro.getDescripcion());
+        if (libro.isLeido() && !leidoCheckBox.isSelected()){
+            leidoCheckBox.doClick();
+        }
+        estadoComboBox.getModel().setSelectedItem(libro.getEstado());
+        unidadesSpinner.setValue(libro.getUnidadesLibro());
+        decimalesSpinner.setValue(libro.getDecimalesLibro());
         
     }
+    
+    public void limpiarCamposTexto(){
+        tituloTextField.setText("");
+        descripcionTextArea.setText("");
+        referenciaTextField.setText("");
+        estadoComboBox.getModel().setSelectedItem("Malo");
+        unidadesSpinner.setValue(0);
+        decimalesSpinner.setValue(0);
+        if (leidoCheckBox.isSelected()){
+            leidoCheckBox.doClick();
+        }
+    } 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
