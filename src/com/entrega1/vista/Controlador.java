@@ -42,15 +42,18 @@ public class Controlador {
                 }
                 else {
                     miModelo.reemplazarLibro(libro, indice);
+                    miVista.mostrarMensajeExito("El libro se ha actualizado correctamente");
                 }
             }
             else {
                 miModelo.addLibro(libro);
+                miVista.mostrarMensajeExito("El libro se ha añadido a la lista satisfactoriamente");
             }
             
             if (!error){
                 miVista.actualizaListaLibros(miModelo.getListaLibros());
                 miVista.limpiarCamposTexto();
+                
             }  
         }     
     }
@@ -58,14 +61,18 @@ public class Controlador {
     private boolean compruebaLibro(String titulo, String isbn, double precio){
         boolean guardarLibro = true;
         String error = "";
+
         if (titulo == null || titulo.length() > 20){
-            error = error + "El titulo del libro debe tener entre 1 y 20 caracteres. ";
+            error += "El titulo del libro debe tener entre 1 y 20 caracteres. ";
         }
         if (isbn == null || isbn.length() > 13){
-            error = error + "El isbn del libro debe tener entre 1 y 13 caracteres. ";
+            error += "El isbn del libro debe tener entre 1 y 13 caracteres. ";
+        }
+        if (libroYaExiste(isbn)){
+            error += "El libro ya existe en la lista";
         }
         if (precio < 0){
-            error = error + "Los euros no pueden ser negativos. ";
+            error += "Los euros no pueden ser negativos. ";
         }
         if (!error.equals("")){
             guardarLibro = false;
@@ -74,10 +81,20 @@ public class Controlador {
         return guardarLibro;
     }
     
+    private boolean libroYaExiste(String isbn){
+        for (int i=0; i<miModelo.getListaLibros().size(); i++){
+            if (isbn.equals(miModelo.getListaLibros().get(i).getISBN()) && i!=miVista.elementoListaSeleccionado()){
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public void procesarEventoEditar(){
         int indice=miVista.elementoListaSeleccionado();
         if (indice!=-1){ // Si hay elemento seleccionado
             miVista.editarLibro(miModelo.getListaLibros().get(indice));
+            miVista.mostrarMensajeExito("Editando libro...");
         }
         else {
             miVista.mostrarMensajeError("Debe seleccionar un elemento de la lista");
@@ -89,6 +106,7 @@ public class Controlador {
         if (indice!=-1){
             miModelo.getListaLibros().remove(indice);
             miVista.actualizaListaLibros(miModelo.getListaLibros());
+            miVista.mostrarMensajeExito("El libro se ha borrado de la lista");
         }
         else {
             miVista.mostrarMensajeError("Debe seleccionar un elemento de la lista");

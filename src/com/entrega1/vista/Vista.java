@@ -33,7 +33,10 @@ public class Vista extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
         errorLabel = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        exitoLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         librosList = new javax.swing.JList<>();
@@ -79,10 +82,21 @@ public class Vista extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(900, 450));
 
-        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        jPanel1.setLayout(new java.awt.GridLayout(1, 2));
+
+        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         errorLabel.setForeground(new java.awt.Color(255, 0, 0));
-        jPanel1.add(errorLabel);
+        jPanel7.add(errorLabel);
+
+        jPanel1.add(jPanel7);
+
+        jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+
+        exitoLabel.setForeground(new java.awt.Color(0, 204, 0));
+        jPanel8.add(exitoLabel);
+
+        jPanel1.add(jPanel8);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_END);
 
@@ -266,6 +280,12 @@ public class Vista extends javax.swing.JFrame {
 
     public void mostrarMensajeError(String mensaje){
         errorLabel.setText(mensaje);
+        exitoLabel.setText("");
+    }
+    
+    public void mostrarMensajeExito(String mensaje){
+        exitoLabel.setText(mensaje);
+        errorLabel.setText("");
     }
     
     public String getTituloLibro(){
@@ -341,6 +361,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JButton editarButton;
     private javax.swing.JLabel errorLabel;
     private javax.swing.JComboBox<String> estadoComboBox;
+    private javax.swing.JLabel exitoLabel;
     private javax.swing.JButton guardarButton;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -371,6 +392,8 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JCheckBox leidoCheckBox;
