@@ -48,6 +48,7 @@ public class Main {
                 Vista vista = new Vista();
                 vista.setMinimumSize(new Dimension(900,450));
                 vista.setVisible(true);
+
             }
         });
     }

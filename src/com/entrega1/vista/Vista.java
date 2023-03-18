@@ -7,6 +7,7 @@ package com.entrega1.vista;
 import com.entrega1.modelo.ReferenciaLibro;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import javax.swing.SpinnerNumberModel;
 
 /**
  *
@@ -21,6 +22,9 @@ public class Vista extends javax.swing.JFrame {
     public Vista() {
         initComponents();
         miControlador=new Controlador(this);
+        ((SpinnerNumberModel) unidadesSpinner.getModel()).setMinimum(0);
+        ((SpinnerNumberModel) decimalesSpinner.getModel()).setMinimum(0);
+        librosList.setSelectionMode(1);
     }
 
     /**
@@ -33,9 +37,9 @@ public class Vista extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
         errorLabel = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
         exitoLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -82,21 +86,21 @@ public class Vista extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(900, 450));
 
-        jPanel1.setLayout(new java.awt.GridLayout(1, 2));
+        jPanel1.setLayout(new java.awt.BorderLayout());
 
-        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         errorLabel.setForeground(new java.awt.Color(255, 0, 0));
-        jPanel7.add(errorLabel);
+        jPanel9.add(errorLabel);
 
-        jPanel1.add(jPanel7);
+        jPanel1.add(jPanel9, java.awt.BorderLayout.CENTER);
 
-        jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
-        exitoLabel.setForeground(new java.awt.Color(0, 204, 0));
-        jPanel8.add(exitoLabel);
+        exitoLabel.setForeground(new java.awt.Color(0, 153, 0));
+        jPanel7.add(exitoLabel);
 
-        jPanel1.add(jPanel8);
+        jPanel1.add(jPanel7, java.awt.BorderLayout.EAST);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_END);
 
@@ -207,6 +211,11 @@ public class Vista extends javax.swing.JFrame {
         jPanel5.setLayout(new java.awt.GridLayout(1, 0));
 
         leidoCheckBox.setText("Ya lo he leído");
+        leidoCheckBox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                leidoCheckBoxKeyPressed(evt);
+            }
+        });
         jPanel5.add(leidoCheckBox);
 
         jPanel22.add(jPanel5);
@@ -268,6 +277,11 @@ public class Vista extends javax.swing.JFrame {
         if (evt.getKeyCode() == KeyEvent.VK_DELETE){
             miControlador.procesarEventoBorrar();
         }
+        else if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            if (librosList.getSelectedIndex()!=-1){ // Si hay seleccionado un elemento
+                librosList.clearSelection();
+            }
+        }
     }//GEN-LAST:event_librosListKeyPressed
 
     private void editarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarButtonActionPerformed
@@ -277,6 +291,12 @@ public class Vista extends javax.swing.JFrame {
     private void borrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarButtonActionPerformed
         miControlador.procesarEventoBorrar();
     }//GEN-LAST:event_borrarButtonActionPerformed
+
+    private void leidoCheckBoxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_leidoCheckBoxKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            leidoCheckBox.doClick();
+        }
+    }//GEN-LAST:event_leidoCheckBoxKeyPressed
 
     public void mostrarMensajeError(String mensaje){
         errorLabel.setText(mensaje);
@@ -393,7 +413,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JCheckBox leidoCheckBox;

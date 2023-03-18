@@ -55,21 +55,21 @@ public class Controlador {
                 miVista.limpiarCamposTexto();
                 
             }  
-        }     
+        }
     }
     
     private boolean compruebaLibro(String titulo, String isbn, double precio){
         boolean guardarLibro = true;
         String error = "";
 
-        if (titulo == null || titulo.length() > 20){
+        if (titulo.length() < 1 || titulo.length() > 20){
             error += "El titulo del libro debe tener entre 1 y 20 caracteres. ";
         }
-        if (isbn == null || isbn.length() > 13){
+        if (isbn.length() < 1 || isbn.length() > 13){
             error += "El isbn del libro debe tener entre 1 y 13 caracteres. ";
         }
         if (libroYaExiste(isbn)){
-            error += "El libro ya existe en la lista";
+            error += "Ya existe un libro con el mismo ISBN en la lista.";
         }
         if (precio < 0){
             error += "Los euros no pueden ser negativos. ";
