@@ -38,7 +38,6 @@ public class Controlador {
         boolean leido=miVista.isLeidoLibro();
         int unidades = miVista.getUnidadesLibro();
         int decimales = miVista.getDecimalesLibro();
-        String decimalesString = String.format("%2d", decimales);
         
         boolean error=false;
 
