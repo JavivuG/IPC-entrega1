@@ -22,8 +22,10 @@ public class Vista extends javax.swing.JFrame {
     public Vista() {
         initComponents();
         miControlador=new Controlador(this);
+        // Hago que no pueda poner numeros negativos en ninguno de los spinner
         ((SpinnerNumberModel) unidadesSpinner.getModel()).setMinimum(0);
         ((SpinnerNumberModel) decimalesSpinner.getModel()).setMinimum(0);
+
         librosList.setSelectionMode(1);
     }
 
@@ -84,8 +86,12 @@ public class Vista extends javax.swing.JFrame {
         descripcionTextArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(308, 160));
+        setPreferredSize(new java.awt.Dimension(308, 160));
         setSize(new java.awt.Dimension(900, 450));
 
+        jPanel1.setMinimumSize(new java.awt.Dimension(10, 25));
+        jPanel1.setPreferredSize(new java.awt.Dimension(10, 25));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
@@ -104,7 +110,11 @@ public class Vista extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_END);
 
+        jPanel2.setMinimumSize(new java.awt.Dimension(300, 130));
+        jPanel2.setPreferredSize(new java.awt.Dimension(300, 130));
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
+
+        jScrollPane1.setMinimumSize(new java.awt.Dimension(258, 130));
 
         librosList.setPreferredSize(null);
         librosList.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -118,6 +128,8 @@ public class Vista extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.LINE_END);
 
+        jPanel3.setMinimumSize(new java.awt.Dimension(408, 240));
+        jPanel3.setPreferredSize(new java.awt.Dimension(408, 240));
         jPanel3.setLayout(new java.awt.BorderLayout());
 
         jPanel4.setLayout(new java.awt.GridLayout(1, 3));
@@ -160,6 +172,7 @@ public class Vista extends javax.swing.JFrame {
 
         jPanel3.add(jPanel4, java.awt.BorderLayout.PAGE_END);
 
+        jPanel21.setMinimumSize(new java.awt.Dimension(508, 216));
         jPanel21.setLayout(new java.awt.BorderLayout());
 
         jPanel22.setLayout(new java.awt.GridLayout(4, 2));
@@ -222,6 +235,7 @@ public class Vista extends javax.swing.JFrame {
 
         jPanel21.add(jPanel22, java.awt.BorderLayout.PAGE_END);
 
+        jPanel23.setMinimumSize(new java.awt.Dimension(128, 24));
         jPanel23.setLayout(new java.awt.GridLayout(1, 2));
 
         jPanel24.setLayout(new java.awt.GridLayout(1, 0));
@@ -232,6 +246,7 @@ public class Vista extends javax.swing.JFrame {
 
         jPanel23.add(jPanel24);
 
+        jPanel25.setMinimumSize(new java.awt.Dimension(64, 24));
         jPanel25.setLayout(new java.awt.GridLayout(1, 0));
 
         tituloTextField.setMinimumSize(new java.awt.Dimension(1000, 1000));
@@ -253,6 +268,7 @@ public class Vista extends javax.swing.JFrame {
         jPanel28.setLayout(new java.awt.GridLayout(1, 0));
 
         descripcionTextArea.setColumns(20);
+        descripcionTextArea.setLineWrap(true);
         descripcionTextArea.setRows(5);
         jScrollPane3.setViewportView(descripcionTextArea);
 
@@ -269,10 +285,23 @@ public class Vista extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Se ejecuta la acción asociada a la pulsación del boton de guardar
+     * Añade un libro a la lista de libros
+     * También puede actuar como "Actualizar" si se tiene un libro seleccionado en la lista
+     * Cada libro debe tener un isbn de entre 1 y 13 caracteres y un titulo de entre 1 y 20 caracteres
+     * @param evt 
+     */
     private void guardarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarButtonActionPerformed
         this.miControlador.procesarEventoGuardar();
     }//GEN-LAST:event_guardarButtonActionPerformed
 
+    /**
+     * Atajos de teclado para la lista de libros.
+     * Tecla Supr: mientras se tiene seleccionado un libro para borrarlo de la lista
+     * Tecla Esc: mientras se tiene seleccionado un libro para dejar de tener ese libro seleccionado
+     * @param evt 
+     */
     private void librosListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_librosListKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_DELETE){
             miControlador.procesarEventoBorrar();
@@ -284,62 +313,129 @@ public class Vista extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_librosListKeyPressed
 
+    /**
+     * Se ejecuta la acción asociada para el boton de editar.
+     * Debe haber un libro seleccionado
+     * Si hay un libro seleccionado entonces se copian sus caracteristicas a todos los campos del formulario
+     * @param evt 
+     */
     private void editarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarButtonActionPerformed
         miControlador.procesarEventoEditar();
     }//GEN-LAST:event_editarButtonActionPerformed
 
+    /**
+     * Metodo que se ejecuta cuando se pulsa el botón de borrar.
+     * Debe haber un libro seleccionado
+     * Si hay un libro seleccionado entonces se borra de la lista
+     * @param evt 
+     */
     private void borrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarButtonActionPerformed
         miControlador.procesarEventoBorrar();
     }//GEN-LAST:event_borrarButtonActionPerformed
 
+    /**
+     * Atajo de teclado para el checkBox de leído
+     * Al pulsar enter y tener seleccionado el checkbox de leido entonces se hace un toggle de su estado
+     * @param evt 
+     */
     private void leidoCheckBoxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_leidoCheckBoxKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER){
             leidoCheckBox.doClick();
         }
     }//GEN-LAST:event_leidoCheckBoxKeyPressed
 
+    /**
+     * Muestra en el errorLabel (esquina inferior izquierda) un error
+     * @param mensaje Error que se desea mostrar
+     */
     public void mostrarMensajeError(String mensaje){
         errorLabel.setText(mensaje);
         exitoLabel.setText("");
     }
     
+    /**
+     * Muestra en el exitoLabel (esquina inferior derecha) un mensaje o mensaje de exito
+     * Por ejemplo: cuando se añade un libro se mostrará que se ha añadido un libro a la lista
+     * @param mensaje Mensaje de exito que se desea mostrar
+     */
     public void mostrarMensajeExito(String mensaje){
         exitoLabel.setText(mensaje);
         errorLabel.setText("");
     }
     
+    /**
+     * Devuelve el titulo del libro que hay en el campo tituloTextField
+     * Debe tener entre 1 y 20 caracteres
+     * @return Titulo del libro
+     */
     public String getTituloLibro(){
         return tituloTextField.getText();
     }
     
+    /**
+     * Devuelve la descripcion del libro, se encuentra en el descripcionTextArea
+     * @return Descripcion del libro
+     */
     public String getDescripcionLibro(){
         return descripcionTextArea.getText();
     }
     
+    /**
+     * Devuelve el isbn de un libro
+     * Debe de tener entre 1 y 13 caracteres
+     * @return isbn de un libro
+     */
     public String getISBNLibro(){
         return referenciaTextField.getText();
     }
     
+    /**
+     * Devuelve el estado de un libro
+     * Puede ser Malo, Regular o Bueno
+     * @return estado del libro
+     */
     public String getEstadoLibro(){
         return (String) estadoComboBox.getSelectedItem();
     }
     
+    /**
+     * Devuelve el número del precio del libro.
+     * Si el precio es de 14,60 el unidadesSpinner tendrá como valor 14
+     * @return Valor entero de unidadesSpinner
+     */
     public int getUnidadesLibro(){
         return (int) unidadesSpinner.getValue();
     }
     
+    /**
+     * Devuelve el número decimal del precio del libro.
+     * Si el precio es de 14,60 el decimalSpinner tendrá como valor 60
+     * @return Valor entero de decimalSpinner
+     */
     public int getDecimalesLibro(){
         return (int) decimalesSpinner.getValue();
     }
     
+    /**
+     * Devuelve si un libro se ha leido o no
+     * @return Valor del leidoCheckBox
+     */
     public boolean isLeidoLibro(){
         return leidoCheckBox.isSelected();
     }
     
+    /**
+     * Devuelve el indice del elemento seleccionado de la lista de libros
+     * @return indiceLibroSeleccionado Devuelve -1 si no hay nada seleccionado
+     */
     public int elementoListaSeleccionado(){
         return librosList.getSelectedIndex();
     }
     
+    /**
+     * Actualiza la lista de los libros. Esta lista se mostrará en el JList
+     * @param listaLibros Nueva lista de libros
+     */
     public void actualizaListaLibros(ArrayList<ReferenciaLibro> listaLibros){
         String[] datos=new String[listaLibros.size()];
         for (int i=0; i<listaLibros.size(); i++){
@@ -348,11 +444,18 @@ public class Vista extends javax.swing.JFrame {
         librosList.setListData(datos); 
     }
     
+    /**
+     * Pone el valor de todos los formularios para la informacion del libro con la informacion del libro que se va a editar
+     * @param libro Libro que se va a editar
+     */
     public void editarLibro(ReferenciaLibro libro){
         tituloTextField.setText(libro.getTitulo());
         referenciaTextField.setText(libro.getISBN());
         descripcionTextArea.setText(libro.getDescripcion());
         if (libro.isLeido() && !leidoCheckBox.isSelected()){
+            leidoCheckBox.doClick();
+        }
+        else if (!libro.isLeido() && leidoCheckBox.isSelected()){
             leidoCheckBox.doClick();
         }
         estadoComboBox.getModel().setSelectedItem(libro.getEstado());
@@ -361,6 +464,9 @@ public class Vista extends javax.swing.JFrame {
         
     }
     
+    /**
+     * Vacia o pone a su valor predefinido todos los campos de texto, comboBox, textArea, Spinner para introducir las caracteristicas del libro
+     */
     public void limpiarCamposTexto(){
         tituloTextField.setText("");
         descripcionTextArea.setText("");
