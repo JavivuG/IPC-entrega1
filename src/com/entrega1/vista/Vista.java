@@ -12,6 +12,7 @@ import javax.swing.SpinnerNumberModel;
 /**
  *
  * @author jagarci
+ * @author mgonzal
  */
 public class Vista extends javax.swing.JFrame {
     private Controlador miControlador;
@@ -465,7 +466,8 @@ public class Vista extends javax.swing.JFrame {
     }
     
     /**
-     * Vacia o pone a su valor predefinido todos los campos de texto, comboBox, textArea, Spinner para introducir las caracteristicas del libro
+     * Vacia o pone a su valor predefinido todos los campos de texto, comboBox, textArea, Spinner 
+     * para introducir las caracteristicas del libro
      */
     public void limpiarCamposTexto(){
         tituloTextField.setText("");

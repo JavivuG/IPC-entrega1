@@ -8,8 +8,9 @@ import com.entrega1.vista.Vista;
 import java.awt.Dimension;
 
 /**
- * 
+ * Clase que representa el metodo main de la aplicación
  * @author jagarci
+ * @author mgonzal
  */
 public class Main {
         /**
@@ -46,7 +47,7 @@ public class Main {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Vista vista = new Vista();
-                vista.setMinimumSize(new Dimension(900,450));
+                vista.setMinimumSize(new Dimension(530,351));
                 vista.setVisible(true);
 
             }

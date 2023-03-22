@@ -9,12 +9,13 @@ import java.util.ArrayList;
 /**
  * Clase que representa el modelo de la aplicacion almacena el arraylist de libros
  * @author jagarci
+ * @author mgonzal
  */
 public class Modelo {
     private ArrayList<ReferenciaLibro> listaLibros;
     
     /**
-     * Constructor del modelo
+     * Constructor del modelo de la aplicación
      */
     public Modelo(){
         listaLibros=new ArrayList<>();
@@ -37,11 +38,28 @@ public class Modelo {
     }
     
     /**
+     * Devuelve el libro en la posición indicada
+     * @param indice Indice del libro que se desea obtener
+     * @return libro en el indice que se indica
+     */
+    public ReferenciaLibro getLibro(int indice){
+        return listaLibros.get(indice);
+    }
+    
+    /**
      * Reemplaza un libro dado en el indice dado
      * @param libro Libro nuevo que se quiere introducir
      * @param indice Indice en el que se quiere introducir el nuevo libro
      */
     public void reemplazarLibro(ReferenciaLibro libro, int indice){
         listaLibros.set(indice, libro);
+    }
+    
+    /**
+     * Borra el libro que esta en la posición indice
+     * @param indice Posición del libro que se desea borrar
+     */
+    public void borraLibro(int indice){
+        listaLibros.remove(indice);
     }
 }

@@ -10,7 +10,7 @@ import com.entrega1.modelo.ReferenciaLibro;
 /**
  * Clase que representa el controlador de la aplicación, consulta/actualiza los elementos de la vista e informacion del modelo
  * @author jagarci
- * 
+ * @author mgonzal
  */
 public class Controlador {
     private Modelo miModelo; // Modelo de la aplicación
@@ -45,7 +45,7 @@ public class Controlador {
             ReferenciaLibro libro=new ReferenciaLibro(titulo, descripcion, isbn, estado, unidades, decimales, leido); // libro nuevo
             int indice = miVista.elementoListaSeleccionado();
             if (indice!=-1){ // Si hay un libro seleccionado
-                if (!miModelo.getListaLibros().get(indice).getISBN().equals(libro.getISBN())){ // Si los isbn son iguales entonces puedo cambiar el libro
+                if (!miModelo.getLibro(indice).equals(libro)){ // Si los isbn son iguales entonces puedo cambiar el libro
                     miVista.mostrarMensajeError("No puedes modificar el ISBN de un libro existente");
                     error=true;
                 }
@@ -91,7 +91,7 @@ public class Controlador {
     // Comprueba si el libro ya existe en la lista
     private boolean libroYaExiste(String isbn){
         for (int i=0; i<miModelo.getListaLibros().size(); i++){
-            if (isbn.equals(miModelo.getListaLibros().get(i).getISBN()) && i!=miVista.elementoListaSeleccionado()){
+            if (isbn.equals(miModelo.getLibro(i).getISBN()) && i!=miVista.elementoListaSeleccionado()){
                 return true;
             }
         }
@@ -105,7 +105,7 @@ public class Controlador {
     public void procesarEventoEditar(){
         int indice=miVista.elementoListaSeleccionado();
         if (indice!=-1){ // Si hay elemento seleccionado
-            miVista.editarLibro(miModelo.getListaLibros().get(indice));
+            miVista.editarLibro(miModelo.getLibro(indice));
             miVista.mostrarMensajeExito("Editando libro...");
         }
         else {
@@ -125,7 +125,7 @@ public class Controlador {
     public void procesarEventoBorrar(){
         int indice=miVista.elementoListaSeleccionado();
         if (indice!=-1){ // Si hay un elemento seleccionado
-            miModelo.getListaLibros().remove(indice);
+            miModelo.borraLibro(indice);
             miVista.actualizaListaLibros(miModelo.getListaLibros());
             miVista.mostrarMensajeExito("El libro se ha borrado de la lista");
         }

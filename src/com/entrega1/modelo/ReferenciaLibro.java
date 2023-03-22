@@ -4,11 +4,10 @@
  */
 package com.entrega1.modelo;
 
-import java.util.Locale;
-
 /**
  * Clase que representa un libro
  * @author javivu
+ * @author mgonzal
  */
 public class ReferenciaLibro {
     private String titulo;
