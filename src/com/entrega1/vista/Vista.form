@@ -94,10 +94,10 @@
     <Container class="javax.swing.JPanel" name="jPanel2">
       <Properties>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[300, 130]"/>
+          <Dimension value="[500, 130]"/>
         </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[300, 130]"/>
+          <Dimension value="[250, 130]"/>
         </Property>
       </Properties>
       <Constraints>
@@ -146,10 +146,10 @@
     <Container class="javax.swing.JPanel" name="jPanel3">
       <Properties>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[408, 240]"/>
+          <Dimension value="[300, 240]"/>
         </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[408, 240]"/>
+          <Dimension value="[350, 240]"/>
         </Property>
       </Properties>
       <Constraints>
@@ -228,7 +228,10 @@
         <Container class="javax.swing.JPanel" name="jPanel21">
           <Properties>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[508, 216]"/>
+              <Dimension value="[408, 216]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[408, 216]"/>
             </Property>
           </Properties>
           <Constraints>
@@ -337,14 +340,32 @@
                     <Container class="javax.swing.JPanel" name="jPanel35">
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
-                        <Property name="columns" type="int" value="0"/>
+                        <Property name="columns" type="int" value="2"/>
                         <Property name="rows" type="int" value="1"/>
                       </Layout>
                       <SubComponents>
-                        <Component class="javax.swing.JSpinner" name="unidadesSpinner">
-                        </Component>
-                        <Component class="javax.swing.JSpinner" name="decimalesSpinner">
-                        </Component>
+                        <Container class="javax.swing.JPanel" name="jPanel10">
+
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                            <Property name="columns" type="int" value="0"/>
+                            <Property name="rows" type="int" value="1"/>
+                          </Layout>
+                          <SubComponents>
+                            <Component class="javax.swing.JSpinner" name="unidadesSpinner">
+                            </Component>
+                          </SubComponents>
+                        </Container>
+                        <Container class="javax.swing.JPanel" name="jPanel8">
+
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                            <Property name="columns" type="int" value="0"/>
+                            <Property name="rows" type="int" value="1"/>
+                          </Layout>
+                          <SubComponents>
+                            <Component class="javax.swing.JSpinner" name="decimalesSpinner">
+                            </Component>
+                          </SubComponents>
+                        </Container>
                       </SubComponents>
                     </Container>
                   </SubComponents>

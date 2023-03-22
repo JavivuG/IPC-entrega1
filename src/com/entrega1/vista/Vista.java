@@ -69,7 +69,9 @@ public class Vista extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jPanel34 = new javax.swing.JPanel();
         jPanel35 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
         unidadesSpinner = new javax.swing.JSpinner();
+        jPanel8 = new javax.swing.JPanel();
         decimalesSpinner = new javax.swing.JSpinner();
         jPanel6 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -111,8 +113,8 @@ public class Vista extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_END);
 
-        jPanel2.setMinimumSize(new java.awt.Dimension(300, 130));
-        jPanel2.setPreferredSize(new java.awt.Dimension(300, 130));
+        jPanel2.setMinimumSize(new java.awt.Dimension(500, 130));
+        jPanel2.setPreferredSize(new java.awt.Dimension(250, 130));
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
         jScrollPane1.setMinimumSize(new java.awt.Dimension(258, 130));
@@ -129,8 +131,8 @@ public class Vista extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.LINE_END);
 
-        jPanel3.setMinimumSize(new java.awt.Dimension(408, 240));
-        jPanel3.setPreferredSize(new java.awt.Dimension(408, 240));
+        jPanel3.setMinimumSize(new java.awt.Dimension(300, 240));
+        jPanel3.setPreferredSize(new java.awt.Dimension(350, 240));
         jPanel3.setLayout(new java.awt.BorderLayout());
 
         jPanel4.setLayout(new java.awt.GridLayout(1, 3));
@@ -173,7 +175,8 @@ public class Vista extends javax.swing.JFrame {
 
         jPanel3.add(jPanel4, java.awt.BorderLayout.PAGE_END);
 
-        jPanel21.setMinimumSize(new java.awt.Dimension(508, 216));
+        jPanel21.setMinimumSize(new java.awt.Dimension(408, 216));
+        jPanel21.setPreferredSize(new java.awt.Dimension(408, 216));
         jPanel21.setLayout(new java.awt.BorderLayout());
 
         jPanel22.setLayout(new java.awt.GridLayout(4, 2));
@@ -213,9 +216,17 @@ public class Vista extends javax.swing.JFrame {
 
         jPanel34.setLayout(new java.awt.GridLayout(1, 0));
 
-        jPanel35.setLayout(new java.awt.GridLayout(1, 0));
-        jPanel35.add(unidadesSpinner);
-        jPanel35.add(decimalesSpinner);
+        jPanel35.setLayout(new java.awt.GridLayout(1, 2));
+
+        jPanel10.setLayout(new java.awt.GridLayout());
+        jPanel10.add(unidadesSpinner);
+
+        jPanel35.add(jPanel10);
+
+        jPanel8.setLayout(new java.awt.GridLayout());
+        jPanel8.add(decimalesSpinner);
+
+        jPanel35.add(jPanel8);
 
         jPanel34.add(jPanel35);
 
@@ -497,6 +508,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
@@ -521,6 +533,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
