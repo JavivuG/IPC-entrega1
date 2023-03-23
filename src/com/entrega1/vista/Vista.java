@@ -158,6 +158,11 @@ public class Vista extends javax.swing.JFrame {
                 editarButtonActionPerformed(evt);
             }
         });
+        editarButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                editarButtonKeyPressed(evt);
+            }
+        });
         jPanel17.add(editarButton);
 
         jPanel4.add(jPanel17);
@@ -168,6 +173,11 @@ public class Vista extends javax.swing.JFrame {
         borrarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 borrarButtonActionPerformed(evt);
+            }
+        });
+        borrarButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                borrarButtonKeyPressed(evt);
             }
         });
         jPanel18.add(borrarButton);
@@ -357,6 +367,40 @@ public class Vista extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_leidoCheckBoxKeyPressed
 
+    /**
+     * Accion para seleccionar o deseleccionar elementos de la lista estando seleccionado el boton editar
+     * @param evt Evento generado al pulsar la tecla
+     */
+    private void editarButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editarButtonKeyPressed
+        seleccionElementosLista(evt);
+    }//GEN-LAST:event_editarButtonKeyPressed
+
+    /**
+     * Accion para seleccionar o deseleccionar elementos de la lista estando seleccionado el boton editar
+     * @param evt Evento generado al pulsar la tecla
+     */
+    private void borrarButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_borrarButtonKeyPressed
+        seleccionElementosLista(evt);
+    }//GEN-LAST:event_borrarButtonKeyPressed
+
+    /**
+     * Selecciona o deja de seleccionar elementos de una lista
+     * Selecciona un elemento si se pulsa un tecla entre 1 y 9 
+     * Para seleccionar el primer elemento se pulsaria el 1
+     * Deja de seleccionar el elemento seleccionado al pulsar ESCAPE
+     * @param evt Evento generado al pulsar la tecla
+     */
+    private void seleccionElementosLista(java.awt.event.KeyEvent evt) {                                        
+        if (evt.getKeyCode()>=49 && evt.getKeyCode()<=57){
+            librosList.setSelectedIndex(evt.getKeyCode()-49);
+        }
+        else if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            if (librosList.getSelectedIndex()!=-1){ // Si hay seleccionado un elemento
+                librosList.clearSelection();
+            }
+        }
+    }
+    
     /**
      * Muestra en el errorLabel (esquina inferior izquierda) un error
      * @param mensaje Error que se desea mostrar
