@@ -172,9 +172,8 @@ public class ReferenciaLibro {
     @Override
     public boolean equals(Object o){
         if (o instanceof ReferenciaLibro){
-            String tituloOtroLibro= ((ReferenciaLibro) o).getTitulo();
             String isbnOtroLibro = ((ReferenciaLibro) o).getISBN();
-            if (getTitulo().equals(tituloOtroLibro) && getISBN().equals(isbnOtroLibro)){
+            if (getISBN().equals(isbnOtroLibro)){
                 return true;
             }
             else {
