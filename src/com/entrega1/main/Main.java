@@ -47,7 +47,7 @@ public class Main {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Vista vista = new Vista();
-                vista.setMinimumSize(new Dimension(530,351));
+                vista.setMinimumSize(new Dimension(600,350));
                 vista.setVisible(true);
 
             }

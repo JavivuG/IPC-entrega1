@@ -26,6 +26,7 @@ public class Vista extends javax.swing.JFrame {
         // Hago que no pueda poner numeros negativos en ninguno de los spinner
         ((SpinnerNumberModel) unidadesSpinner.getModel()).setMinimum(0);
         ((SpinnerNumberModel) decimalesSpinner.getModel()).setMinimum(0);
+        ((SpinnerNumberModel) decimalesSpinner.getModel()).setMaximum(99);
 
         librosList.setSelectionMode(1);
     }
@@ -145,6 +146,11 @@ public class Vista extends javax.swing.JFrame {
                 guardarButtonActionPerformed(evt);
             }
         });
+        guardarButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                guardarButtonEnterPressed(evt);
+            }
+        });
         jPanel16.add(guardarButton);
 
         jPanel4.add(jPanel16);
@@ -157,6 +163,11 @@ public class Vista extends javax.swing.JFrame {
                 editarButtonActionPerformed(evt);
             }
         });
+        editarButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                editarButtonKeyPressed(evt);
+            }
+        });
         jPanel17.add(editarButton);
 
         jPanel4.add(jPanel17);
@@ -167,6 +178,11 @@ public class Vista extends javax.swing.JFrame {
         borrarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 borrarButtonActionPerformed(evt);
+            }
+        });
+        borrarButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                borrarButtonKeyPressed(evt);
             }
         });
         jPanel18.add(borrarButton);
@@ -218,12 +234,12 @@ public class Vista extends javax.swing.JFrame {
 
         jPanel35.setLayout(new java.awt.GridLayout(1, 2));
 
-        jPanel10.setLayout(new java.awt.GridLayout());
+        jPanel10.setLayout(new java.awt.GridLayout(1, 0));
         jPanel10.add(unidadesSpinner);
 
         jPanel35.add(jPanel10);
 
-        jPanel8.setLayout(new java.awt.GridLayout());
+        jPanel8.setLayout(new java.awt.GridLayout(1, 0));
         jPanel8.add(decimalesSpinner);
 
         jPanel35.add(jPanel8);
@@ -355,6 +371,24 @@ public class Vista extends javax.swing.JFrame {
             leidoCheckBox.doClick();
         }
     }//GEN-LAST:event_leidoCheckBoxKeyPressed
+
+    private void guardarButtonEnterPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_guardarButtonEnterPressed
+        if (evt.getKeyCode()== KeyEvent.VK_ENTER){
+             miControlador.procesarEventoGuardar();
+        }
+    }//GEN-LAST:event_guardarButtonEnterPressed
+
+    private void editarButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editarButtonKeyPressed
+        if (evt.getKeyCode()== KeyEvent.VK_ENTER){
+             miControlador.procesarEventoEditar();
+        }
+    }//GEN-LAST:event_editarButtonKeyPressed
+
+    private void borrarButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_borrarButtonKeyPressed
+         if (evt.getKeyCode()== KeyEvent.VK_ENTER){
+             miControlador.procesarEventoGuardar();
+        }
+    }//GEN-LAST:event_borrarButtonKeyPressed
 
     /**
      * Muestra en el errorLabel (esquina inferior izquierda) un error
