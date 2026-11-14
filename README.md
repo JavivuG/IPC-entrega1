@@ -1,30 +1,48 @@
-# IPC Entrega 1: gestor de libros con Swing
+<div align="center">
 
-Aplicación de escritorio en Java Swing para dar de alta, editar y borrar referencias de libros desde una única ventana.
+# Gestor de libros con Java Swing
 
-Asignatura **Interacción Persona-Computadora**, primera entrega, 2.º curso, 2.º cuatrimestre, curso 2022-2023. Grado en Ingeniería Informática, Universidad de Valladolid.
+**Aplicación de escritorio MVC para dar de alta, editar y borrar libros desde una sola ventana, con validación de datos y atajos de teclado**
 
-## Qué hace
+![Java](https://img.shields.io/badge/Java_11-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![Swing](https://img.shields.io/badge/Swing-5382A1?style=for-the-badge)
+![NetBeans](https://img.shields.io/badge/NetBeans-1B6AC6?style=for-the-badge&logo=apachenetbeanside&logoColor=white)
+![Ant](https://img.shields.io/badge/Apache_Ant-A81C7D?style=for-the-badge&logo=apacheant&logoColor=white)
 
-- Formulario con título, ISBN, descripción, estado (`Malo`, `Regular` o `Bueno`), precio (unidades y decimales con dos `JSpinner`) y la casilla "leído".
-- Lista (`JList`) con los libros guardados. Al seleccionar uno se puede editar o borrar.
-- Valida los datos antes de guardar: el título debe tener entre 1 y 20 caracteres y el ISBN entre 1 y 13, sin ISBN repetidos. Además, no deja cambiar el ISBN de un libro existente.
-- Muestra mensajes de éxito y de error en la propia ventana.
-- Atajos de teclado: `Supr` borra el libro seleccionado en la lista y `Esc` quita la selección. Con el foco en Editar o Borrar, las teclas `1`-`9` seleccionan el libro de esa posición. `Enter` marca o desmarca la casilla "leído".
+<sub>Interacción Persona-Computadora (entrega 1) · Grado en Ingeniería Informática · Universidad de Valladolid · Curso 2022-2023</sub>
 
-## Tecnologías
+</div>
 
-- Java 11
-- Swing, con la apariencia Nimbus, y formularios del editor visual de NetBeans (`.form`)
-- Proyecto NetBeans con Ant (`build.xml`, `nbproject/`)
+```mermaid
+flowchart LR
+    U["Usuario"] -- "clic / teclado" --> V["Vista<br/>(JFrame Swing)"]
+    V -- "eventos" --> C["Controlador<br/>procesarEventoGuardar / Editar / Borrar"]
+    C -- "valida y actualiza" --> M["Modelo<br/>lista de ReferenciaLibro"]
+    C -- "refresca lista y mensajes" --> V
+```
 
-## Lo que aprendí / Aspectos técnicos destacados
+## En pocas palabras
 
-- **Separación Modelo-Vista-Controlador**: `Modelo` guarda la lista de `ReferenciaLibro`, `Vista` es el `JFrame` y `Controlador` concentra la lógica de los eventos (`procesarEventoGuardar`, `procesarEventoEditar`, `procesarEventoBorrar`).
-- **Un único botón para guardar**: si hay un libro seleccionado, el botón lo actualiza y, si no, lo añade. La identidad del libro es el ISBN (`equals`).
-- **Precio a partir de dos enteros**: `getPrecio()` combina las unidades y los decimales en un `double`.
-- **Usabilidad**: el tamaño mínimo de la ventana es fijo (600x350) para que el diseño no se rompa al redimensionarla, y hay atajos de teclado y mensajes de retroalimentación.
-- Código documentado con Javadoc.
+- **Reto**: diseñar una interfaz de escritorio usable para gestionar una colección de libros, con datos validados y respuesta clara al usuario.
+- **Solución**: una ventana Swing con formulario (título, ISBN, descripción, estado, precio y "leído"), lista de libros guardados y lógica separada en Modelo-Vista-Controlador.
+- **Demuestra**: diseño de interfaces y usabilidad, arquitectura MVC, validación de entrada y programación orientada a eventos en Java.
+
+## Lo más destacado
+
+- **Arquitectura MVC**: `Modelo` guarda la lista de `ReferenciaLibro`, `Vista` es el `JFrame` y `Controlador` concentra la lógica de los eventos.
+- **Validación antes de guardar**: título de 1 a 20 caracteres, ISBN de 1 a 13 y sin repetidos; además no deja cambiar el ISBN de un libro existente.
+- **Un único botón para guardar**: si hay un libro seleccionado lo actualiza y, si no, lo añade; la identidad del libro es el ISBN (`equals`).
+- **Uso completo con teclado**: `Supr` borra el seleccionado, `Esc` quita la selección, `1`-`9` eligen el libro de esa posición con el foco en Editar o Borrar, y `Enter` marca o desmarca "leído".
+- **Retroalimentación y robustez visual**: mensajes de éxito y error en la propia ventana y tamaño mínimo fijo (600x350) para que el diseño no se rompa al redimensionar.
+
+## Competencias
+
+| Área | Qué se aplicó |
+| --- | --- |
+| Interfaces gráficas | Swing con apariencia Nimbus, `JList`, `JSpinner` y formularios del editor visual de NetBeans |
+| Usabilidad (IPC) | Atajos de teclado, mensajes de retroalimentación, validación en el formulario |
+| Diseño de software | Separación Modelo-Vista-Controlador, código documentado con Javadoc |
+| Herramientas | Proyecto NetBeans con Ant (`build.xml`, `nbproject/`) |
 
 ## Estructura del repositorio
 
@@ -37,12 +55,14 @@ IPC-entrega1/
     └── vista/Vista.java  Vista.form  Controlador.java
 ```
 
+El precio se introduce con dos `JSpinner` (unidades y decimales) y `getPrecio()` los combina en un `double`. El estado del libro es `Malo`, `Regular` o `Bueno`.
+
 ## Requisitos
 
 - JDK 11 o superior.
 - Opcional: NetBeans o Apache Ant para usar `build.xml`.
 
-## Cómo compilar y ejecutar
+## Cómo ejecutarlo
 
 Abre la carpeta como proyecto en NetBeans y ejecútalo, o usa Ant:
 
@@ -50,14 +70,19 @@ Abre la carpeta como proyecto en NetBeans y ejecútalo, o usa Ant:
 ant run
 ```
 
-Sin IDE ni Ant, con el JDK:
+<details>
+<summary>Sin IDE ni Ant, solo con el JDK</summary>
 
 ```sh
 javac --release 11 -d build/classes $(find src -name '*.java')
 java -cp build/classes com.entrega1.main.Main
 ```
 
-La compilación con `javac` está comprobada con OpenJDK 17. `ant run` y el arranque de la interfaz gráfica no se han probado.
+</details>
+
+## Estado y limitaciones
+
+La compilación con `javac` está comprobada con OpenJDK 17. `ant run` y el arranque de la interfaz gráfica no se han probado. Los datos se guardan solo en memoria mientras la aplicación está abierta.
 
 ## Autoría
 
@@ -65,4 +90,4 @@ Proyecto en grupo. Autores de los commits: `Javier` y `jagarci` (la misma person
 
 ---
 
-Parte de [UVa-Projects](https://github.com/JavivuG/UVa-Projects).
+<div align="center"><sub>Parte de <a href="https://github.com/JavivuG/UVa-Projects">UVa-Projects</a> · Javier García González</sub></div>
