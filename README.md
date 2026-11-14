@@ -13,13 +13,9 @@
 
 </div>
 
-```mermaid
-flowchart LR
-    U["Usuario"] -- "clic / teclado" --> V["Vista<br/>(JFrame Swing)"]
-    V -- "eventos" --> C["Controlador<br/>procesarEventoGuardar / Editar / Borrar"]
-    C -- "valida y actualiza" --> M["Modelo<br/>lista de ReferenciaLibro"]
-    C -- "refresca lista y mensajes" --> V
-```
+<p align="center">
+  <img src="docs/screenshots/editando-libro.png" alt="Ventana del gestor de libros con cuatro libros en la lista y «Fortunata y Jacinta» cargado en el formulario para editarlo" width="760">
+</p>
 
 ## En pocas palabras
 
@@ -43,6 +39,24 @@ flowchart LR
 | Usabilidad (IPC) | Atajos de teclado, mensajes de retroalimentación, validación en el formulario |
 | Diseño de software | Separación Modelo-Vista-Controlador, código documentado con Javadoc |
 | Herramientas | Proyecto NetBeans con Ant (`build.xml`, `nbproject/`) |
+
+## Capturas
+
+| Edición de un libro | Validación del formulario |
+| --- | --- |
+| ![Formulario con «Fortunata y Jacinta» seleccionado para editar y el mensaje «Editando libro...»](docs/screenshots/editando-libro.png) | ![Mensaje de error en rojo: título de más de 20 caracteres e ISBN ya existente en la lista](docs/screenshots/error-validacion.png) |
+
+Capturas reales de la aplicación compilada con OpenJDK 17 (`--release 11`) y ejecutada en un servidor X virtual (Xvfb), sin gestor de ventanas, por eso no aparece la barra de título. Los libros son datos de ejemplo: se rellenó el formulario y se usaron los botones **Guardar** y **Editar** de la propia aplicación.
+
+## Arquitectura
+
+```mermaid
+flowchart LR
+    U["Usuario"] -- "clic / teclado" --> V["Vista<br/>(JFrame Swing)"]
+    V -- "eventos" --> C["Controlador<br/>procesarEventoGuardar / Editar / Borrar"]
+    C -- "valida y actualiza" --> M["Modelo<br/>lista de ReferenciaLibro"]
+    C -- "refresca lista y mensajes" --> V
+```
 
 ## Estructura del repositorio
 
@@ -82,7 +96,7 @@ java -cp build/classes com.entrega1.main.Main
 
 ## Estado y limitaciones
 
-La compilación con `javac` está comprobada con OpenJDK 17. `ant run` y el arranque de la interfaz gráfica no se han probado. Los datos se guardan solo en memoria mientras la aplicación está abierta.
+La compilación con `javac` y el arranque de la interfaz gráfica están comprobados con OpenJDK 17 (capturas de arriba); `ant run` no se ha probado. La lista muestra el ISBN recortado cuando es largo y hay que desplazarla en horizontal. Los datos se guardan solo en memoria mientras la aplicación está abierta.
 
 ## Autoría
 
